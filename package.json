@@ -1,0 +1,26 @@
+{
+  "name": "discord-chatty-bot",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "author": "Raymond Hammarling <raymond@hammarlings.se>",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "eslint --fix lib/ test/",
+    "prepublish": "run-s lint test",
+    "test": "ava",
+    "watch": "run-p watch:*",
+    "watch:test": "ava -w"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "eslint": "^5.4.0",
+    "eslint-config-kellyirc": "^3.1.0",
+    "npm-run-all": "^4.1.3"
+  }
+}
