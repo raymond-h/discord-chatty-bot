@@ -15,7 +15,8 @@
     "prepublish": "run-s lint test",
     "test": "ava",
     "watch": "run-p watch:*",
-    "watch:test": "ava -w"
+    "watch:test": "ava -w",
+    "start": "node ."
   },
   "devDependencies": {
     "ava": "^0.25.0",
@@ -31,5 +32,8 @@
     "level-mem": "^3.0.1",
     "lexicographic-integer": "^1.1.0",
     "ramda": "^0.25.0"
+  },
+  "engines": {
+    "node": ">=8.9.1 <9.0.0"
   }
 }
