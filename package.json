@@ -34,6 +34,7 @@
     "lexicographic-integer": "^1.1.0",
     "memdown": "^3.0.0",
     "mongodown": "^1.2.0",
+    "msgpack5": "^4.2.0",
     "ramda": "^0.25.0",
     "redis-url": "^1.2.1",
     "redisdown": "^0.1.12"
