@@ -36,6 +36,7 @@
     "mongodown": "^1.2.0",
     "msgpack5": "^4.2.0",
     "ramda": "^0.25.0",
+    "recursive-readdir": "^2.2.2",
     "redis-url": "^1.2.1",
     "redisdown": "^0.1.12"
   },
