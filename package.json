@@ -33,7 +33,10 @@
     "levelup": "^3.1.1",
     "lexicographic-integer": "^1.1.0",
     "memdown": "^3.0.0",
-    "ramda": "^0.25.0"
+    "mongodown": "^1.2.0",
+    "ramda": "^0.25.0",
+    "redis-url": "^1.2.1",
+    "redisdown": "^0.1.12"
   },
   "engines": {
     "node": ">=8.9.1 <9.0.0"
