@@ -12,11 +12,18 @@ test('generate only possible sentence', async t => {
   ];
 
   const adapter = {
-    findRandomQuadStartingWith: words => data.find(quad => R.equals(words, R.take(3, quad.words))),
-    findRandomQuadEndingWith: words => data.find(quad => R.equals(words, R.takeLast(3, quad.words))),
+    findRandomQuadStartingWith: (...words) =>
+      data.find(quad =>
+        R.equals(words, R.take(3, quad.words))
+      ),
+
+    findRandomQuadEndingWith: (...words) =>
+      data.find(quad =>
+        R.equals(words, R.takeLast(3, quad.words))
+      ),
   };
 
-  t.deepEqual(adapter.findRandomQuadStartingWith(['a', 'yellow', 'bird']), data[2]);
+  t.deepEqual(adapter.findRandomQuadStartingWith(...['a', 'yellow', 'bird']), data[2]);
 
   const actual = await megahal.generateAsync(['spy', 'a', 'yellow', 'bird'], adapter);
 

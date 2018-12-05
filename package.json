@@ -42,5 +42,9 @@
   },
   "engines": {
     "node": ">=8.9.1 <9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raymond-h/discord-chatty-bot"
   }
 }
