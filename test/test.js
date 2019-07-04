@@ -2,6 +2,7 @@ import test from 'ava';
 import R from 'ramda';
 
 import * as megahal from '../lib/megahal';
+import * as util from '../lib/util';
 
 test('generate only possible sentence', async t => {
   const data = [
@@ -28,4 +29,12 @@ test('generate only possible sentence', async t => {
   const actual = await megahal.generateAsync(['spy', 'a', 'yellow', 'bird'], adapter);
 
   t.is(actual.join(' '), 'i spy a yellow bird with arthritis');
+});
+
+test('clean message removes bot mention', t => {
+  t.deepEqual(util.cleanMessage('botname', '@botname hello world').trim(), 'hello world');
+});
+
+test('clean message replaces spoilers', t => {
+  t.deepEqual(util.cleanMessage('unused', 'hello world ||this is a spoiler|| cool fact huh').trim(), 'hello world [SPOILER] cool fact huh');
 });
