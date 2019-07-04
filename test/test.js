@@ -38,3 +38,36 @@ test('clean message removes bot mention', t => {
 test('clean message replaces spoilers', t => {
   t.deepEqual(util.cleanMessage('unused', 'hello world ||this is a spoiler|| cool fact huh').trim(), 'hello world [SPOILER] cool fact huh');
 });
+
+test('replaceSpoilersWith', t => {
+  const strings = ['ayy', 'bee', 'cee'];
+  let i = 0;
+  const replaceFn = () => {
+    return strings[i++];
+  };
+
+  t.deepEqual(
+    util.replaceSpoilersWith('hello world [SPOILER] cool [SPOILER][SPOILER] huh', replaceFn).trim(),
+    'hello world ||ayy|| cool ||bee||||cee|| huh'
+  );
+  t.is(i, 3); // how many times replaceFn was called
+});
+
+test('replaceSpoilersWith async vs sync', async t => {
+  const strings = ['ayy', 'bee', 'cee'];
+  let i = 0;
+  const replaceFn = () => {
+    return strings[i++];
+  };
+  let j = 0;
+  const asyncReplaceFn = async () => {
+    return strings[j++];
+  };
+
+  t.deepEqual(
+    await util.replaceSpoilersWithAsync('hello world [SPOILER] cool [SPOILER][SPOILER] huh', asyncReplaceFn),
+    util.replaceSpoilersWith('hello world [SPOILER] cool [SPOILER][SPOILER] huh', replaceFn)
+  );
+  t.is(i, 3); // how many times replaceFn was called
+  t.is(j, 3); // how many times asyncReplaceFn was called
+});
