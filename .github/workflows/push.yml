@@ -1,18 +1,20 @@
-on: push
+on:
+  push:
+    branches:
+      - master
+
 name: Deploy to Dokku on push
+
 jobs:
-  filterMasterBranch:
-    name: Filter Master Branch
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Filter Master Branch
-      uses: actions/bin/filter@3c0b4f0e63ea54ea5df2914b4fabf383368cd0da
-      with:
-        args: branch master
-    - name: Push to Dokku
-      uses: ./.github/git-push/
-      env:
-        SSH_KEY: ${{ secrets.SSH_KEY }}
-        SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
-        TARGET_GIT_URL: ${{ secrets.TARGET_GIT_URL }}
+      - uses: actions/checkout@master
+
+      - name: Push to Dokku
+        uses: ./.github/git-push/start.sh
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+          TARGET_GIT_URL: ${{ secrets.TARGET_GIT_URL }}
