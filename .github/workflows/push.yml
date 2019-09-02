@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Push to Dokku
-        uses: ./.github/git-push/start.sh
+        run: ./.github/git-push/start.sh
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
           SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
