@@ -1,17 +1,10 @@
-version: '3'
+version: '3.8'
 
 services:
-  mongo:
-    image: mongo
-    ports:
-      - '27017:27017'
+  bot:
+    build: .
+    environment:
+      LEVEL_LOCATION: '/storage/brain.db'
+      SEED_DATA_FOLDER: '/storage/seed-data'
     volumes:
-      - 'brain:/data/db'
-
-  redis:
-    image: redis
-    ports:
-      - '6379:6379'
-
-volumes:
-  brain:
+      - '${STORAGE_ROOT}:/storage'
