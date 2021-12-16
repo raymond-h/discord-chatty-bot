@@ -6,5 +6,10 @@ services:
     environment:
       LEVEL_LOCATION: '/storage/brain.db'
       SEED_DATA_FOLDER: '/storage/seed-data'
+      STORAGE_ROOT:
+      DISCORD_TOKEN:
+      EXCLUDED_FROM_LEARNING_CHANNELS:
+      UNPROVOKED_CHATTER_CHANCE:
+      UNPROVOKED_CHATTER_CHANNELS:
     volumes:
       - '${STORAGE_ROOT}:/storage'
