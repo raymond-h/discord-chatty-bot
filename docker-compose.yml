@@ -3,6 +3,7 @@ version: '3.8'
 services:
   bot:
     build: .
+    restart: unless-stopped
     environment:
       LEVEL_LOCATION: '/storage/brain.db'
       SEED_DATA_FOLDER: '/storage/seed-data'
